@@ -1,6 +1,7 @@
 package iset.gestion.app.service;
 
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,28 +12,24 @@ import iset.gestion.app.entities.Client;
 
 @Service
 public class ClientService {
-@Autowired
-ClientRepository clientRepository;
+@Autowired ClientRepository clientRepository;
 
-//affiche
-public List <Client> ConsultClients (){
-	return clientRepository.findAll();
-}
-//add 
 public Client addClient(Client c) {
 	c=clientRepository.save(c);
 	return c;
 }
 
-//update
-public Client updateClient(long id,Client c) {
-	c.setIdclient(id);
-	return c=clientRepository.save(c);
+public List<Client> consultClient(){
+	return clientRepository.findAll();
 }
 
-//delete
-public void deleteClient(long id,Client c) {
+public void deleteClient(long id) {
 	clientRepository.deleteById(id);
 }
 
+
+public Client updateClient(long id,Client c) {
+	c.setIdclient(id);
+	return clientRepository.save(c);
+}
 }
