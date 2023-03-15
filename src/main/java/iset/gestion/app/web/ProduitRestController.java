@@ -25,12 +25,7 @@ public class ProduitRestController {
 		return produitService.addProduit(p);
 	}
 	
-	@PutMapping("/updateProduit")
-	public Produit updateProduit( @RequestParam(name="reference") String reference,@RequestBody Produit p) {
-		
-		 p=produitService.updateProduit(reference, p);
-		 return p;
-	}
+	
 	
 	@GetMapping("/consultProduit")
 	public List<Produit> consultProduit() {
