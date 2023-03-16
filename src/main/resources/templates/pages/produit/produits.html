@@ -170,15 +170,15 @@ margin-bottom:70px;
     </tr>
   </thead>
   <tbody>
-    <tr th:each=" produit : ${produits}">
-    <td th:text=" ${produit.reference}">
-     <td th:text=" ${produit.designation}">
-      <td th:text=" ${produit.prix}">
-       <td th:text=" ${produit.quantite}">
-       <td><img th:src="@{'storage/'+${produit.photo_shema}}"></td>
+    <tr th:each=" produit : ${produits}" >
+    <td th:text=" ${produit.reference}" style="padding-top:30px;">
+     <td th:text=" ${produit.designation}" style="padding-top:30px;">
+      <td th:text=" ${produit.prix}" style="padding-top:30px;">
+       <td th:text=" ${produit.quantite}" style="padding-top:30px;">
+       <td><img th:src="@{'storage/'+${produit.photo_shema}}" width="112px" height="80px" style="border-radius:10px;"></td>
        <td> 
-       		<a th:href="@{/edit(id=${produit.reference})}" class="btn btn-warning">Edit</a>
-       		<a th:href="@{/delete(id=${produit.reference})}" class="btn btn-danger">Delete</a>
+       		<a th:href="@{/edit(id=${produit.reference})}" class="btn btn-warning" style="margin-top:30px;">Edit</a>
+       		<a th:href="@{/delete(id=${produit.reference})}" class="btn btn-danger" style="margin-top:30px;">Delete</a>
        		
        </td>
     </tr>

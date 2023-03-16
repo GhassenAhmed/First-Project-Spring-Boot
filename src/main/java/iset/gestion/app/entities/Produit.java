@@ -36,22 +36,9 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="codeClient")
 	Client Client;
-	/*
-	public Produit(@NotBlank(message = "required reference !") String reference,
-			@NotBlank(message = "required designation !") String designation, double prix, int quantite,
-			String photo_shema, iset.gestion.app.entities.Client client) {
-		super();
-		this.reference = reference;
-		this.designation = designation;
-		this.prix = prix;
-		this.quantite = quantite;
-		this.photo_shema = photo_shema;
-		Client = client;
-	}
-	/*public Produit() {
-		
-	}
-	public String getReference() {
+	
+
+	/*public String getReference() {
 		return reference;
 	}
 	public void setReference(String reference) {
@@ -79,7 +66,7 @@ public class Produit implements Serializable {
 		this.photo_shema=originalFilename;
 		
 	}
-	/*
+	
 	public String getPhoto_shema() {
 		return photo_shema;
 	}*/
