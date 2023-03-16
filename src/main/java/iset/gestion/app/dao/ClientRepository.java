@@ -13,6 +13,6 @@ import iset.gestion.app.entities.Produit;
 
 @RestResource
 public interface ClientRepository extends JpaRepository<Client,Long> {
-	//public Page<Client> findbyName(String mc,Pageable pageable);
+	
 	/*public Page<Client> findByDesignationContains(String mc,Pageable pageable);*/
 }

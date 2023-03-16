@@ -1,5 +1,11 @@
 package iset.gestion.app.web;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,7 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import iset.gestion.app.dao.ProduitRepository;
 import iset.gestion.app.entities.Produit;
@@ -34,7 +40,8 @@ public class ProduitController {
 	}
 	
 	@GetMapping(value="/produits")
-	public 	String getProduits(Model model ,@RequestParam(name="message",defaultValue = "") String message , @RequestParam(name="page",defaultValue ="0") int page
+	public 	String getProduits(Model model ,
+			@RequestParam(name="message",defaultValue = "") String message , @RequestParam(name="page",defaultValue ="0") int page
 			,@RequestParam(name="search",defaultValue = "") String search,@RequestParam(name="per_page",defaultValue="2") int size) {
 		Page<Produit> produit=produitRepository.findByDesignationContains(search, PageRequest.of(page,size));
 		int pageCount=produit.getTotalPages();
@@ -59,11 +66,22 @@ public class ProduitController {
 	}
 	
 	@PostMapping(value="/produits")
-	public String save(@ModelAttribute("produit") @Valid Produit produit,BindingResult r){
+	public String save(@ModelAttribute("produit") @Valid Produit produit,BindingResult r,@RequestParam("photo") MultipartFile photo) throws ParseException, IOException{
 		if(r.hasErrors()) {
 			return("pages/produit/addProduit");
 		}
-		 produitService.addProduit(produit);
+		 
+		 try {
+				if(photo.getOriginalFilename()=="") {
+					 return "pages/produit/addProduit";
+				}
+				produit.setPhoto_shema(photo.getOriginalFilename());
+				produitService.addProduit(produit);
+				String path_directory="C:\\Users\\ghass\\Documents\\workspace-spring-tool-suite-4-4.4.0.RELEASE\\Tp1-Spring-Boot-master\\src\\main\\resources\\static\\storage";
+				Files.copy(photo.getInputStream(), Paths.get(path_directory+File.separator+photo.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+			}catch(IOException e){
+					System.out.println(""+e);
+			}
 		
 		return "redirect:/produits?message=Add_Success";
 	}
@@ -77,7 +95,7 @@ public class ProduitController {
 	}
 	
 	@GetMapping(value="/edit")
-	public String edit(Model model,String id) {
+	public String getProduit(Model model,String id) {
 		Produit produit= produitService.getById(id);
 		model.addAttribute("produit", produit);
 		return("pages/produit/edit");

@@ -125,7 +125,7 @@ margin-bottom:70px;
 
 <div class="container mt-3">
 	<div class="d-flex justify-content-center">
-		<form th:action="@{/produits}" method="post" th:object="${produit}">
+		<form th:action="@{/produits}" method="post" th:object="${produit}"  enctype="multipart/form-data">
 			  <div class="mb-3">
 			    <label for="exampleInputEmail1" class="form-label"  >Reference</label>
 			    <input type="text" class="form-control" th:field="*{reference}">
@@ -146,6 +146,11 @@ margin-bottom:70px;
 			    <label for="exampleInputEmail1" class="form-label">Quantite</label>
 			    <input type="text" class="form-control" th:field="*{quantite}">
 			  </div>
+			  <div class="col-lg-6">
+                     <label>File</label>
+                     <input type="file" name="photo" >
+                      <span th:text="${error_image!=''} ? 'Image Required' : ''" class="text-danger"> </span>
+               </div>
 			  <button type="submit" class="btn btn-primary">Add</button>
 		</form>
 	</div>

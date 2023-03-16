@@ -148,6 +148,7 @@ margin-bottom:70px;
 				    </select>
 				    <br>
 				    <button class="btn btn-info mt-2" type="submit">Change</button>
+				
 		</form>
 	</div>
 	<div class=" py-4">
@@ -164,6 +165,7 @@ margin-bottom:70px;
       <th scope="col" class="table-dark">Designation</th>
       <th scope="col" class="table-dark">Prix</th>
       <th scope="col" class="table-dark">Quantite</th>
+      <th scope="col" class="table-dark">Image</th>
       <th scope="col" class="table-dark">Actions</th>
     </tr>
   </thead>
@@ -173,6 +175,7 @@ margin-bottom:70px;
      <td th:text=" ${produit.designation}">
       <td th:text=" ${produit.prix}">
        <td th:text=" ${produit.quantite}">
+       <td><img th:src="@{'storage/'+${produit.photo_shema}}"></td>
        <td> 
        		<a th:href="@{/edit(id=${produit.reference})}" class="btn btn-warning">Edit</a>
        		<a th:href="@{/delete(id=${produit.reference})}" class="btn btn-danger">Delete</a>

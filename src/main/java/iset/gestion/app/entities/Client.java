@@ -23,19 +23,6 @@ public class Client implements Serializable {
 		private String adresse;
 		@OneToMany(mappedBy = "Client")
 		Collection<Produit> produits;
-		public Client(long idclient, String nom, String adresse, Collection<Produit> produits) {
-			super();
-			this.idclient = idclient;
-			this.nom = nom;
-			this.adresse = adresse;
-			this.produits = produits;
-		}
-		public long getIdclient() {
-			return idclient;
-		}
-		public void setIdclient(long idclient) {
-			this.idclient = idclient;
-		}
 		
 		
 }

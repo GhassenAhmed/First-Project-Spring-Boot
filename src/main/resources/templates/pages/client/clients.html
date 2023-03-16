@@ -93,7 +93,7 @@ margin-bottom:70px;
               </a>
             </li>
             <li>
-              <a th:href="@{/produits}" class="nav-link text-secondary ">
+              <a th:href="@{/clients}" class="nav-link text-secondary ">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
                 Product
               </a>
@@ -134,61 +134,7 @@ margin-bottom:70px;
 				   
 				  </div>
 			</form>
-			
-		<form th:action="@{/produits}" method="get">
-			 <label for="exampleInputEmail1" class="form-label"  >Pagination :</label>
-			 <input type="hidden" th:value="${size}" id="record" >
-			 	<input type="hidden" class="form-control" name="search" th:value="${search}">
-				    <select id="select"  name="per_page">
-				    <option value="2" >2</option>
-				    <option value="4">4</option>
-				    <option value="6">6</option>
-				    <option value="8">8</option>
-				    <option value="10">10</option>
-				    </select>
-				    <br>
-				    <button class="btn btn-info mt-2" type="submit">Change</button>
-		</form>
-	</div>
-	<div class=" py-4">
-			<a th:href="@{/addProduit}" class="btn btn-success float-end">Add Product</a>
-		</div>
-	
-	<div class="" th:if="${message!=''}">
-		<div class="alert alert-success" th:text="${message}"></div> 
-	</div>
-	<table class="table">
-  <thead>
-    <tr>
-      <th scope="col" class="table-dark">Reference</th>
-      <th scope="col" class="table-dark">Designation</th>
-      <th scope="col" class="table-dark">Prix</th>
-      <th scope="col" class="table-dark">Quantite</th>
-      <th scope="col" class="table-dark">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each=" produit : ${produits}">
-    <td th:text=" ${produit.reference}">
-     <td th:text=" ${produit.designation}">
-      <td th:text=" ${produit.prix}">
-       <td th:text=" ${produit.quantite}">
-       <td> 
-       		<a th:href="@{/edit(id=${produit.reference})}" class="btn btn-warning">Edit</a>
-       		<a th:href="@{/delete(id=${produit.reference})}" class="btn btn-danger">Delete</a>
-       		
-       </td>
-    </tr>
-  </tbody>
-</table>
-<nav aria-label="text-center">
-  <ul class="pagination text-center">
-    <li  th:each="p:${pages} "  th:class="${p!=pageCourant} ? 'active page-item' :'page-item' " aria-current="page">
-      <a class="page-link"  th:href="@{/produits(page=${p},search=${search},per_page=${size})}" th:text="${p}"></a>
-    </li>
-  </ul>
-</nav>
-</div>
+			</div>		
 </div>
 
 
@@ -197,24 +143,7 @@ margin-bottom:70px;
    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
    </script>
    
-   <script>
-  	
-  		 const test= document.getElementById("select");
-  		 const record= document.getElementById("record").value;
-  		 
-  		 for(let i = 0 ; i<test.length;i++){
-  			 if(test[i].value==record){
-  				 test[i].setAttribute("selected","selected");
-  			 }
-  		 }
-
   
-	  
-   	
-  
-   
-   
-   </script>
 </body>
 </html>
 

@@ -1,6 +1,7 @@
 package iset.gestion.app.entities;
 
 import javax.annotation.Generated;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,19 +30,25 @@ public class Produit implements Serializable {
 	
 	private double prix;
 	private int quantite;
+	
+	@Column(columnDefinition = "longtext")
+	private String photo_shema;
 	@ManyToOne
 	@JoinColumn(name="codeClient")
 	Client Client;
-	public Produit(String reference, String designation, double prix, int quantite,
-			iset.gestion.app.entities.Client client) {
+	/*
+	public Produit(@NotBlank(message = "required reference !") String reference,
+			@NotBlank(message = "required designation !") String designation, double prix, int quantite,
+			String photo_shema, iset.gestion.app.entities.Client client) {
 		super();
 		this.reference = reference;
 		this.designation = designation;
 		this.prix = prix;
 		this.quantite = quantite;
+		this.photo_shema = photo_shema;
 		Client = client;
 	}
-	public Produit() {
+	/*public Produit() {
 		
 	}
 	public String getReference() {
@@ -68,6 +75,14 @@ public class Produit implements Serializable {
 	public void setQuantite(int quantite) {
 		this.quantite = quantite;
 	}
+	public void setPhoto_shema(String originalFilename) {
+		this.photo_shema=originalFilename;
+		
+	}
+	/*
+	public String getPhoto_shema() {
+		return photo_shema;
+	}*/
 	
 	
 
