@@ -27,7 +27,10 @@ public void deleteClient(long id) {
 	clientRepository.deleteById(id);
 }
 
-
+public Client updateClient(long id,Client c) {
+	c.setIdclient(id);
+	return clientRepository.save(c);
+}
 
 
 public Client getClient(long id) {
