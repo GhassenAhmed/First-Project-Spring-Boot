@@ -15,14 +15,4 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
-public class Client implements Serializable {
-	    @Id
-		@GeneratedValue (strategy = GenerationType.AUTO)
-		private long idclient;
-		private String nom;
-		private String adresse;
-		@OneToMany(mappedBy = "Client")
-		Collection<Produit> produits;
-		
-		
-}
+
