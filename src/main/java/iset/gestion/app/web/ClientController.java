@@ -63,9 +63,5 @@ public class ClientController {
 		return"pages/client/edit";
 	}
 	
-	@PostMapping(value="/addClient")
-	public String addClient(@ModelAttribute("client") Client client) {
-		clientService.addClient(client);
-		return"clients";
-	}
+	
 }
