@@ -62,14 +62,7 @@ public class Produit implements Serializable {
 	public void setQuantite(int quantite) {
 		this.quantite = quantite;
 	}
-	public void setPhoto_shema(String originalFilename) {
-		this.photo_shema=originalFilename;
-		
-	}
 	
-	public String getPhoto_shema() {
-		return photo_shema;
-	}*/
 	
 	
 
