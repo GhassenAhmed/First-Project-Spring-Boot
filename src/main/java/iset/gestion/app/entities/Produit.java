@@ -67,9 +67,7 @@ public class Produit implements Serializable {
 		
 	}
 	
-	public String getPhoto_shema() {
-		return photo_shema;
-	}*/
+	
 	
 	
 
