@@ -94,12 +94,7 @@ public class ProduitController {
 		
 	}
 	
-	@GetMapping(value="/edit")
-	public String getProduit(Model model,String id) {
-		Produit produit= produitService.getById(id);
-		model.addAttribute("produit", produit);
-		return("pages/produit/edit");
-	}
+	
 
 	
 	
